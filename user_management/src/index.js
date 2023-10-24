@@ -1,4 +1,3 @@
-//require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4050;
@@ -12,9 +11,9 @@ const updateRoute = require('./routes/update');
 const getRoute = require('./routes/get');
 
 mongoose.connect(
-    'mongodb://127.0.0.1:27017/GoTest',
+    process.env.DB_CONNECT,
     { useNewUrlParser: true, useUnifiedTopology: true }
-);
+).catch(error => console.log(error));
 
 app.use(express.json(), cors());
 

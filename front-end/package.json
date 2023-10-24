@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start:dev": "nodemon -r dotenv/config src/index.js",
+    "start:dockdev": "nodemon src/index.js",
     "start:prod": "node src/index.js"
   },
   "keywords": [],
