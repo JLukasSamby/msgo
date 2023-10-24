@@ -4,7 +4,8 @@ const User = require('../models/User');
 const verify = require('./verify');
 
 router.post('/:userId', verify, async (req, res) => {
-    const userId = req.body.userId;
+    const userId = req.params.userId;
+    console.log('updating', userId);
     const user = await User.findOne({ _id: userId });
     if (!user) {
         res.status(400).send('Invalid user id');
@@ -16,16 +17,16 @@ router.post('/:userId', verify, async (req, res) => {
         user.password = password;
     }
     if (req.body.email) {
-        user.email = email;
+        user.email = req.body.email;
     }
     if (req.body.username) {
-        user.username = username;
+        user.username = req.body.username;
     }
     if (req.body.first_name) {
-        user.first_name = first_name;
+        user.first_name = req.body.first_name;
     }
     if (req.body.last_name) {
-        user.last_name = last_name;
+        user.last_name = req.body.last_name;
     }
     try {
         await user.save();
