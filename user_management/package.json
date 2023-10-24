@@ -4,7 +4,7 @@
   "description": "A small user management system containing functions to register, login and update with JWT tokens.",
   "main": "src/index.js",
   "scripts": {
-    "start:dev": "node src/index.js",
+    "start:dev": "nodemon -r dotenv/config src/index.js",
     "start:prod": "node src/index.js"
   },
   "keywords": [],
@@ -13,12 +13,12 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "nodemon": "^3.0.1"
   }
 }
