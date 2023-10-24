@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSGO</title>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <% if (user) { %>
+                <!-- Show Log Out button when the user is logged in -->
+                <form method="POST" action="/logout">
+                    <button type="submit">Log out</button>
+                </form>
+                <li><a href="/updateAccount">Update Account</a></li>
+            <% } else { %>
+                <!-- Show Log In and Register links when the user is not logged in -->
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+            <li><a href="/queue">Queue</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
