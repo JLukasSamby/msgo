@@ -13,6 +13,8 @@ const cors = require('cors');
 
 const registerRoute = require('./routes/register');
 const loginRoute = require('./routes/login');
+const updateRoute = require('./routes/update');
+const getRoute = require('./routes/get');
 
 mongoose.connect(
     'mongodb://127.0.0.1:27017/GoTest',
@@ -23,3 +25,5 @@ app.use(express.json(), cors());
 
 app.use('/users/', registerRoute);
 app.use('/users/', loginRoute);
+app.use('/users/', updateRoute);
+app.use('/users/', getRoute);

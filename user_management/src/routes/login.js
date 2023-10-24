@@ -11,8 +11,12 @@ router.post('/login', async (req, res) => {
     if (!password) return res.status(401).send("Incorrect password");
 
     try {
-        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-        res.status(200).header('token', token).send(token);
+        const id = user._id;
+        const token = jwt.sign({ _id: id }, process.env.TOKEN_SECRET);
+        res.status(200)
+            .header('token', token)
+            .body('userId', id)
+            .send(token);
     } catch (error) {
         res.status(500).send(error);
     }
