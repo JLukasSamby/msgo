@@ -22,10 +22,10 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       -
-        name: Build and push
+        name: Build and push live match
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./live-match
           push: true
           target: prod
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/live-match:latest
