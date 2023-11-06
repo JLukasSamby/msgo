@@ -12,6 +12,14 @@ services:
       - ./live-match/src:/usr/src/app/src
     restart: always
 
+  gateway:
+    image: express-gateway
+    volumes:
+      - ./gateway/Config:/var/lib/eg
+    ports:
+      - 8080:8080
+      - 9876:9876
+
   mongo:
     image: mongo
     ports:

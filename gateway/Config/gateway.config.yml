@@ -1,0 +1,32 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  live-match:
+    host: localhost
+    paths: ['/live-match', '/live-match/*']
+serviceEndpoints:
+  live-matchService: 
+    url: 'http://193.11.187.114:3000'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  live-matchPipeline:
+    apiEndpoints:
+      - live-match
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+      - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: live-matchService 
+              changeOrigin: true
